@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniso 1PM / 4PM Report</title>
+
+    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+</head>
+
+<body>
+    <h1>Miniso Report</h1>
+
+    <div class="form-group">
+        <span>1PM</span>
+        <input class="myRadio" type="radio" id="1pm" name="t" value="1PM">
+        <span>4PM</span>
+        <input class="myRadio" type="radio" id="4pm" name="t" value="4PM">
+    </div>
+
+    <div class="form-group">
+        <span>Total Sales</span>
+        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+    </div>
+
+    <div class="form-group">
+        <span>Total Transactions</span>
+        <input class="form-field" type="number" id="tTransactions" name="tTransactions" inputmode="decimal">
+    </div>
+
+
+    <div class="form-group">
+        <span>Items Sold</span>
+        <input class="form-field" type="number" id="itemsS" name="itemsS" inputmode="decimal">
+    </div>
+
+    <button class="button-13" onclick="myFunction()">Generate</button>
+
+    <div class="result" id="result"></div>
+
+
+    <script>
+        function myFunction() {
+
+            let reportTime;
+
+            // Get values
+            if (document.getElementById("1pm").checked) {
+                reportTime = document.getElementById("1pm").value
+            }
+            else if (document.getElementById("4pm").checked) {
+                reportTime = document.getElementById("4pm").value;
+            }
+
+            const salesInput = document.getElementById("tSales");
+            let tS = salesInput.value;
+            const transactionsInput = document.getElementById("tTransactions");
+            let tT = transactionsInput.value;
+            const itemsSoldInput = document.getElementById("itemsS");
+            let iSold = itemsS.value;
+
+            // Output
+            document.getElementById("result").innerHTML = "MET " + reportTime + "<br>" + "Total Sales: $" + tS + "<br>" + "Total Transactions: " + tT + "<br>" + "Items Sold: " + iSold + "<br>" + "PCT: " + (tS / tT).toFixed(2) + "<br>" + "IPT: " + (iSold / tT).toFixed(2);
+
+            navigator.clipboard.writeText("MET " + reportTime + "\n" + "Total Sales: $" + tS + "\n" + "Total Transactions: " + tT + "\n" + "Items Sold: " + iSold + "\n" + "PCT: " + (tS / tT).toFixed(2) + "\n" + "IPT: " + (iSold / tT).toFixed(2));
+        }
+    </script>
+</body>
+
+</html>

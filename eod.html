@@ -7,7 +7,20 @@
     <title>Document</title>
     <style>
         input {
-            width: 80px;
+            width: 70px;
+        }
+        span {
+            display: inline-block;
+            width: 150px;
+        }
+        span.short{
+            width: 20px;
+        }
+        span.shortM{
+            width: 10px;
+        }
+        div{
+            margin: 5px;
         }
     </style>
 </head>
@@ -58,17 +71,17 @@
         <input class="form-field" type="number" id="mCD" name="mCD" inputmode="decimal">
     </div>
     <div>
-        <span>First Transaction (amount & time):</span>
-        <span>$</span>
+        <span>First Transaction (amount & time): </span>
+        <span class="shortM">$</span>
         <input class="form-field" type="number" id="fT" name="fT" inputmode="decimal">
-        <span>AT</span>
+        <span class="short">AT</span>
         <input type="time" id="t1">
     </div>
     <div>
         <span>Last Transaction (amount & time):</span>
-        <span>$</span>
+        <span class="shortM">$</span>
         <input class="form-field" type="number" id="lT" name="lT" inputmode="decimal">
-        <span>AT</span>
+        <span class="short">AT</span>
         <input type="time" id="t2">
     </div>
 

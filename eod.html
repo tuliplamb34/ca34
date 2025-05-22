@@ -1,77 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <a href="index.html">1PM/ 4PM Report</a>
 
+    <br><br>
+
     <div>
         <span>Sales amount:</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="sA" name="sA" inputmode="decimal">
     </div>
-
     <div>
         <span>Sales completion (%):</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="sC" name="sC" inputmode="decimal">
     </div>
-
     <div>
         <span>Total Trans, count:</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="tT" name="tT" inputmode="decimal">
     </div>
-
     <div>
         <span>Total Items sold:</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="tI" name="tI" inputmode="decimal">
     </div>
-
     <div>
         <span>PCT/ ATV:</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="pct" name="pct" inputmode="decimal">
     </div>
-
     <div>
         <span>IPT</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="ipt" name="ipt" inputmode="decimal">
     </div>
-
     <div>
         <span>Labour hour used:</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="lH" name="lH" inputmode="decimal">
     </div>
-
     <div>
         <span>Monthly Target ($):</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="mT" name="mT" inputmode="decimal">
     </div>
-
     <div>
         <span>Monthly Completion ($):</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="mC" name="mC" inputmode="decimal">
     </div>
-
     <div>
         <span>Monthly CD completion rate (%):</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="mCD" name="mCD" inputmode="decimal">
     </div>
-
     <div>
         <span>First Transaction (amount & time):</span>
         <span>$</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="fT" name="fT" inputmode="decimal">
         <span>AT</span>
-        <input type="time">
+        <input type="time" id="t1">
     </div>
-
     <div>
         <span>Last Transaction (amount & time):</span>
         <span>$</span>
-        <input class="form-field" type="number" id="tSales" name="tSales" inputmode="decimal">
+        <input class="form-field" type="number" id="lT" name="lT" inputmode="decimal">
         <span>AT</span>
-        <input type="time">
+        <input type="time" id="t2">
     </div>
+
+    <button class="button-13" onclick="writeReport()">Generate</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function writeReport() {
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let d = (months[new Date().getMonth()] + " " + (new Date().getDate()) + "," + (new Date().getFullYear()));
+            let sA = document.getElementById("sA").value;
+            let sC = document.getElementById("sC").value;
+            let tT = document.getElementById("tT").value;
+            let tI = document.getElementById("tI").value;
+            let pct = document.getElementById("pct").value;
+            let ipt = document.getElementById("ipt").value;
+            let lH = document.getElementById("lH").value;
+            let mT = document.getElementById("mT").value;
+            let mC = document.getElementById("mC").value;
+            let mCD = document.getElementById("mCD").value;
+            let fT = document.getElementById("fT").value;
+            let t1 = document.getElementById("t1").value;
+            let lT = document.getElementById("lT").value;
+            let t2 = document.getElementById("t2").value;
+
+            // Output
+            document.getElementById("result").innerHTML = "EOD (CA34-MET)" + "<br>" + "Date: " + d + "<br>" + "Sales amount: " + sA + "<br>" + "Sales completion (%): " + sC + "<br>" + "Total Trans Count: " + tT + "<br>" + "Total Ttems Sold: " + tI + "<br>" + "PCT/ ATV: " + pct + "<br>" + "IPT: " + ipt + "<br>" + "Labour Hour Used: " + lH + "<br>" + "Monthly Target ($): " + mT + "<br>" + "Monthly Completion ($): " + mC + "<br>" + "Monthly CD Completion Rate (%): " + mCD + "<br>" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "<br>" + "Last Transaction (amount & time): $" + lT + " AT " + t2;
+
+
+            navigator.clipboard.writeText("EOD (CA34-MET)" + "\n" + "Date: " + d + "\n" + "Sales amount: " + sA + "\n" + "Sales completion (%): " + sC + "\n" + "Total Trans Count: " + tT + "\n" + "Total Ttems Sold: " + tI + "\n" + "PCT/ ATV: " + pct + "\n" + "IPT: " + ipt + "\n" + "Labour Hour Used: " + lH + "\n" + "Monthly Target ($): " + mT + "\n" + "Monthly Completion ($): " + mC + "\n" + "Monthly CD Completion Rate (%): " + mCD + "\n" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "\n" + "Last Transaction (amount & time): $" + lT + " AT " + t2);
+
+        }
+
+
+
+    </script>
 </body>
+
 </html>

@@ -17,12 +17,12 @@
 
 }
 
-h1{
+h1 {
     font-family: Garamond, serif;
     margin: 40px;
 }
 
-.result{
+.result {
     border-radius: 6px 6px 6px 6px;
     border: 1px solid #CDD9ED;
     padding: 25px 25px;
@@ -31,9 +31,9 @@ h1{
     color: #acb4c2;
 }
 
-.myRadio{
- width: 20px;
- margin: 10px;
+.myRadio {
+    width: 20px;
+    margin: 10px;
 }
 
 .form-field {
@@ -50,9 +50,11 @@ h1{
     border: 1px solid var(--input-border);
     background: var(--input-background);
     transition: border .3s ease;
+
     &::placeholder {
         color: var(--input-placeholder);
     }
+
     &:focus {
         outline: none;
         border-color: var(--input-border-focus);
@@ -63,7 +65,35 @@ h1{
     position: relative;
     display: flex;
     width: 70%;
-    & > span,
+
+
+    &>span,
+    .form-field {
+        white-space: nowrap;
+        display: block;
+    }
+
+    .form-field:not(:first-child):not(:last-child) {
+        border-radius: 0;
+    }
+
+    .form-field:first-child {
+        border-radius: 6px 0 0 6px;
+    }
+
+    .form-field:last-child {
+        border-radius: 0 6px 6px 0;
+    }
+
+    .form-field:not(:first-child) {
+        margin-left: -1px;
+    }
+
+
+
+
+
+    /* & > span,
     .form-field {
         white-space: nowrap;
         display: block;
@@ -79,7 +109,11 @@ h1{
         &:not(:first-child) {
             margin-left: -1px;
         }
-    }
+    } */
+
+
+
+
     .form-field {
         position: relative;
         z-index: 1;
@@ -88,7 +122,8 @@ h1{
         margin-top: 0;
         margin-bottom: 0;
     }
-    & > span {
+
+    &>span {
         text-align: center;
         padding: 8px 12px;
         font-size: 14px;
@@ -98,8 +133,9 @@ h1{
         border: 1px solid var(--group-border);
         transition: background .3s ease, border .3s ease, color .3s ease;
     }
+
     &:focus-within {
-        & > span {
+        &>span {
             color: var(--group-color-focus);
             background: var(--group-background-focus);
             border-color: var(--group-border-focus);
@@ -114,6 +150,7 @@ html {
 
 * {
     box-sizing: inherit;
+
     &:before,
     &:after {
         box-sizing: inherit;
@@ -127,9 +164,11 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #F5F9FF;  
+    background: #F5F9FF;
+
     .form-group {
         max-width: 360px;
+
         &:not(:last-child) {
             margin-bottom: 32px;
         }
@@ -137,34 +176,34 @@ body {
 }
 
 .button-13 {
-  background-color: #fff;
-  border: 1px solid #d5d9d9;
-  border-radius: 8px;
-  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-  box-sizing: border-box;
-  color: #0f1111;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Amazon Ember",sans-serif;
-  font-size: 13px;
-  line-height: 29px;
-  padding: 0 10px 0 11px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: 100px;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember", sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
 }
 
 .button-13:hover {
-  background-color: #f7fafa;
+    background-color: #f7fafa;
 }
 
 .button-13:focus {
-  border-color: #008296;
-  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-  outline: 0;
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
 }

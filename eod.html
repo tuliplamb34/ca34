@@ -53,14 +53,14 @@
         <span>Total Items sold:</span>
         <input class="form-field" type="number" id="tI" name="tI" inputmode="decimal">
     </div>
-    <div>
+    <!-- <div>
         <span>PCT/ ATV:</span>
         <input class="form-field" type="number" id="pct" name="pct" inputmode="decimal">
     </div>
     <div>
         <span>IPT</span>
         <input class="form-field" type="number" id="ipt" name="ipt" inputmode="decimal">
-    </div>
+    </div> -->
     <div>
         <span>Labour hour used:</span>
         <input class="form-field" type="number" id="lH" name="lH" inputmode="decimal">
@@ -73,10 +73,10 @@
         <span>Monthly Completion ($):</span>
         <input class="form-field" type="number" id="mC" name="mC" inputmode="decimal">
     </div>
-    <div>
+    <!-- <div>
         <span>Monthly CD completion rate (%):</span>
         <input class="form-field" type="number" id="mCD" name="mCD" inputmode="decimal">
-    </div>
+    </div> -->
     <div>
         <span>First Transaction (amount & time): </span>
         <span class="shortM">$</span>
@@ -104,22 +104,22 @@
             let sC = document.getElementById("sC").value;
             let tT = document.getElementById("tT").value;
             let tI = document.getElementById("tI").value;
-            let pct = document.getElementById("pct").value;
-            let ipt = document.getElementById("ipt").value;
+            // let pct = document.getElementById("pct").value;
+            // let ipt = document.getElementById("ipt").value;
             let lH = document.getElementById("lH").value;
             let mT = document.getElementById("mT").value;
             let mC = document.getElementById("mC").value;
-            let mCD = document.getElementById("mCD").value;
+            // let mCD = document.getElementById("mCD").value;
             let fT = document.getElementById("fT").value;
             let t1 = document.getElementById("t1").value;
             let lT = document.getElementById("lT").value;
             let t2 = document.getElementById("t2").value;
 
             // Output
-            document.getElementById("result").innerHTML = "EOD (CA34-MET)" + "<br>" + "Date: " + d + "<br>" + "Sales amount: " + sA + "<br>" + "Sales completion (%): " + sC + "<br>" + "Total Trans Count: " + tT + "<br>" + "Total Ttems Sold: " + tI + "<br>" + "PCT/ ATV: " + pct + "<br>" + "IPT: " + ipt + "<br>" + "Labour Hour Used: " + lH + "<br>" + "Monthly Target ($): " + mT + "<br>" + "Monthly Completion ($): " + mC + "<br>" + "Monthly CD Completion Rate (%): " + mCD + "<br>" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "<br>" + "Last Transaction (amount & time): $" + lT + " AT " + t2;
+            document.getElementById("result").innerHTML = "EOD (CA34-MET)" + "<br>" + "Date: " + d + "<br>" + "<br>" + "Sales Amount: " + sA + "<br>" + "Sales Completion (%): " + sC + "<br>" + "Total Trans Count: " + tT + "<br>" + "Total Ttems Sold: " + tI + "<br>" + "PCT/ ATV: " + (sA / tT).toFixed(2) + "<br>" + "IPT: " + (tI / tT).toFixed(2) + "<br>" + "Labour Hour Used: " + lH + "<br>" + "<br>" + "Monthly Target ($): " + mT + "<br>" + "Monthly Completion ($): " + mC + "<br>" + "Monthly CD Completion Rate (%): " + ((mC / mT) * 100).toFixed(2) + "<br>" + "<br>" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "<br>" + "Last Transaction (amount & time): $" + lT + " AT " + t2;
 
 
-            navigator.clipboard.writeText("EOD (CA34-MET)" + "\n" + "Date: " + d + "\n" + "Sales amount: " + sA + "\n" + "Sales completion (%): " + sC + "\n" + "Total Trans Count: " + tT + "\n" + "Total Ttems Sold: " + tI + "\n" + "PCT/ ATV: " + pct + "\n" + "IPT: " + ipt + "\n" + "Labour Hour Used: " + lH + "\n" + "Monthly Target ($): " + mT + "\n" + "Monthly Completion ($): " + mC + "\n" + "Monthly CD Completion Rate (%): " + mCD + "\n" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "\n" + "Last Transaction (amount & time): $" + lT + " AT " + t2);
+            navigator.clipboard.writeText("EOD (CA34-MET)" + "\n" + "Date: " + d + "\n" + "\n" + "Sales Amount: " + sA + "\n" + "Sales Completion (%): " + sC + "\n" + "Total Trans Count: " + tT + "\n" + "Total Ttems Sold: " + tI + "\n" + "PCT/ ATV: " + (sA / tT).toFixed(2) + "\n" + "IPT: " + (tI / tT).toFixed(2) + "\n" + "Labour Hour Used: " + lH + "\n" + "\n" + "Monthly Target ($): " + mT + "\n" + "Monthly Completion ($): " + mC + "\n" + "Monthly CD Completion Rate (%): " + ((mC / mT) * 100).toFixed(2) + "\n" + "\n" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "\n" + "Last Transaction (amount & time): $" + lT + " AT " + t2);
 
         }
 

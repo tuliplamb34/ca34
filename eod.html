@@ -91,9 +91,16 @@
         <span class="short">AT</span>
         <input type="time" id="t2">
     </div>
-
+    <div>
+        <span>Membership Sign-Ups:</span>
+        <input class="form-field" type="number" id="mS" name="mS" inputmode="decimal">
+    </div>
+    <div>
+        <span>Gift Card Sales Total:</span>
+        <input class="form-field" type="number" id="gcS" name="gcS" inputmode="decimal">
+    </div>
     <button class="button-13" onclick="writeReport()">Generate</button>
-
+    </br></br>
     <div class="result" id="result"></div>
 
     <script>
@@ -114,12 +121,26 @@
             let t1 = document.getElementById("t1").value;
             let lT = document.getElementById("lT").value;
             let t2 = document.getElementById("t2").value;
+            let mS = document.getElementById("mS").value;
+            let gcS = document.getElementById("gcS").value;
 
             // Output
-            document.getElementById("result").innerHTML = "EOD (CA34-MET)" + "<br>" + "Date: " + d + "<br>" + "<br>" + "Sales Amount: " + sA + "<br>" + "Sales Completion (%): " + sC + "<br>" + "Total Trans Count: " + tT + "<br>" + "Total Ttems Sold: " + tI + "<br>" + "PCT/ ATV: " + (sA / tT).toFixed(2) + "<br>" + "IPT: " + (tI / tT).toFixed(2) + "<br>" + "Labour Hour Used: " + lH + "<br>" + "<br>" + "Monthly Target ($): " + mT + "<br>" + "Monthly Completion ($): " + mC + "<br>" + "Monthly CD Completion Rate (%): " + ((mC / mT) * 100).toFixed(2) + "<br>" + "<br>" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "<br>" + "Last Transaction (amount & time): $" + lT + " AT " + t2;
+
+            let eod_result = "EOD Report - (METROTOWN / CA34)" + "<br>" + "Date: " + d + "<br>" + "<br>" + "Daily Performance:" + "<br>" + "Total Sales: $" + sA + "<br>" + "Sales Completion: " + sC + "%" + "<br>" + "Total Transations: " + tT + "<br>" + "Total Items Sold: " + tI + "<br>" + "PCT/ ATV: $" + (sA / tT).toFixed(2) + "<br>" + "IPT: " + (tI / tT).toFixed(2) + "<br>" + "Labour Hours Used: " + lH + "<br>" + "Membership Sign-Ups: " + mS + "<br>" + "Gift Card Sales Total: $" + gcS + "<br>" + "<br>" + "Monthly Progress:" + "<br>" + "Monthly Sales Target: $" + mT + "<br>" + "Month-to-Date Sales: $" + mC + "<br>" + "Completion Rate: " + ((mC / mT) * 100).toFixed(2) + "%" + "<br>" + "<br>" + "Transation Timing:" + "<br>" + "First Transaction: $" + fT + " at " + t1 + "<br>" + "Last Transaction: $" + lT + " at " + t2;
+
+            let clip_eod_result = eod_result.replace(/<br>/g, "\n");
+
+            document.getElementById("result").innerHTML = "Preview:" + "<br>" + "<br>" + eod_result;
+
+            navigator.clipboard.writeText(clip_eod_result);
 
 
-            navigator.clipboard.writeText("EOD (CA34-MET)" + "\n" + "Date: " + d + "\n" + "\n" + "Sales Amount: " + sA + "\n" + "Sales Completion (%): " + sC + "\n" + "Total Trans Count: " + tT + "\n" + "Total Ttems Sold: " + tI + "\n" + "PCT/ ATV: " + (sA / tT).toFixed(2) + "\n" + "IPT: " + (tI / tT).toFixed(2) + "\n" + "Labour Hour Used: " + lH + "\n" + "\n" + "Monthly Target ($): " + mT + "\n" + "Monthly Completion ($): " + mC + "\n" + "Monthly CD Completion Rate (%): " + ((mC / mT) * 100).toFixed(2) + "\n" + "\n" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "\n" + "Last Transaction (amount & time): $" + lT + " AT " + t2);
+
+
+            // document.getElementById("result").innerHTML = "EOD Report - (METROTOWN / CA34)" + "<br>" + "Date: " + d + "<br>" + "<br>" + "Daily Performance:" + "<br>" + "Total Sales: $" + sA + "<br>" + "Sales Completion: " + sC + "%" + "<br>" + "Total Transations: " + tT + "<br>" + "Total Items Sold: " + tI + "<br>" + "PCT/ ATV: $" + (sA / tT).toFixed(2) + "<br>" + "IPT: " + (tI / tT).toFixed(2) + "<br>" + "Labour Hours Used: " + lH + "<br>" + "<br>" + "Monthly Progress:" + "<br>" + "Monthly Sales Target: $" + mT + "<br>" + "Month-to-Date Sales: $" + mC + "<br>" + "Completion Rate: " + ((mC / mT) * 100).toFixed(2) + "%" + "<br>" + "<br>" + "Transation Timing:" + "<br>" + "First Transaction: $" + fT + " at " + t1 + "<br>" + "Last Transaction: $" + lT + " at " + t2;
+
+            // navigator.clipboard.writeText("EOD (CA34-MET)" + "\n" + "Date: " + d + "\n" + "\n" + "Sales Amount: " + sA + "\n" + "Sales Completion (%): " + sC + "\n" + "Total Trans Count: " + tT + "\n" + "Total Ttems Sold: " + tI + "\n" + "PCT/ ATV: " + (sA / tT).toFixed(2) + "\n" + "IPT: " + (tI / tT).toFixed(2) + "\n" + "Labour Hour Used: " + lH + "\n" + "\n" + "Monthly Target ($): " + mT + "\n" + "Monthly Completion ($): " + mC + "\n" + "Monthly CD Completion Rate (%): " + ((mC / mT) * 100).toFixed(2) + "\n" + "\n" + "First Transaction (amount & time): $" + fT + " AT " + t1 + "\n" + "Last Transaction (amount & time): $" + lT + " AT " + t2);
+
 
         }
 

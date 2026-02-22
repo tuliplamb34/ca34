@@ -14,6 +14,15 @@
 
     <a href="eod.html">Go to End of Day Report</a>
     <br><br>
+
+    <div class="form-group">
+        <span>MET</span>
+        <input class="myRadio" type="radio" id="met" name="l" value="MET">
+        <span>WOW</span>
+        <input class="myRadio" type="radio" id="wow" name="l" value="WOW-MET">
+    </div>
+
+
     <div class="form-group">
         <span>1PM</span>
         <input class="myRadio" type="radio" id="1pm" name="t" value="1PM">
@@ -45,6 +54,16 @@
     <script>
         function myFunction() {
 
+            let reportLocation;
+
+            // Get Location
+            if (document.getElementById("met").checked) {
+                reportLocation = document.getElementById("met").value
+            }
+            else if (document.getElementById("wow").checked) {
+                reportLocation = document.getElementById("wow").value
+            }
+
             let reportTime;
 
             // Get values
@@ -63,9 +82,9 @@
             let iSold = itemsS.value;
 
             // Output
-            document.getElementById("result").innerHTML = "MET " + reportTime + "<br>" + "Total Sales: $" + tS + "<br>" + "Total Transactions: " + tT + "<br>" + "Items Sold: " + iSold + "<br>" + "PCT: " + (tS / tT).toFixed(2) + "<br>" + "IPT: " + (iSold / tT).toFixed(2);
+            document.getElementById("result").innerHTML = reportLocation + " " + reportTime + "<br>" + "Total Sales: $" + tS + "<br>" + "Total Transactions: " + tT + "<br>" + "Items Sold: " + iSold + "<br>" + "PCT: " + (tS / tT).toFixed(2) + "<br>" + "IPT: " + (iSold / tT).toFixed(2);
 
-            navigator.clipboard.writeText("MET " + reportTime + "\n" + "Total Sales: $" + tS + "\n" + "Total Transactions: " + tT + "\n" + "Items Sold: " + iSold + "\n" + "PCT: " + (tS / tT).toFixed(2) + "\n" + "IPT: " + (iSold / tT).toFixed(2));
+            navigator.clipboard.writeText(reportLocation + " " + reportTime + "\n" + "Total Sales: $" + tS + "\n" + "Total Transactions: " + tT + "\n" + "Items Sold: " + iSold + "\n" + "PCT: " + (tS / tT).toFixed(2) + "\n" + "IPT: " + (iSold / tT).toFixed(2));
         }
     </script>
 </body>
